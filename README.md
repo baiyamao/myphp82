@@ -157,11 +157,12 @@ manifest。
 
 | 触发操作 | 生成的 Docker 标签 |
 | --- | --- |
-| 推送到 `main` | `main`、`sha-<commit>`、`latest` |
-| 推送 `v*.*.*` Git 标签 | 对应版本标签、`sha-<commit>` |
-| 在 GitHub Actions 页面手动运行 | 根据所选分支或标签生成 |
+| 推送到 `main` | `latest` |
+| 推送 `v*.*.*` Git 标签 | 对应版本标签，例如 `v0.0.2` |
+| 在 GitHub Actions 页面手动运行 | `main` 发布 `latest`，标签发布对应版本 |
 
 `latest` 只在默认分支 `main` 上更新。正式发布时应创建 `v*.*.*` 标签。
+工作流不会再生成 `main` 或 `sha-<commit>` 等临时标签。
 
 ### 配置 GitHub Actions Secrets
 
@@ -203,7 +204,7 @@ git commit -m "feat: update PHP image"
 git push origin main
 ```
 
-该操作会更新 Docker Hub 上的 `main`、`sha-<commit>` 和 `latest` 标签。
+该操作只会更新 Docker Hub 上的 `latest` 标签。
 
 ### 发布正式版本
 

@@ -47,8 +47,6 @@ jobs:
           images: ${{ env.IMAGE_NAME }}
           tags: |
             type=semver,pattern=v{{version}}
-            type=ref,event=branch
-            type=sha,prefix=sha-
             type=raw,value=latest,enable={{is_default_branch}}
 
       - name: Log in to Docker Hub
@@ -110,8 +108,6 @@ jobs:
           images: ${{ env.IMAGE_NAME }}
           tags: |
             type=semver,pattern=v{{version}}
-            type=ref,event=branch
-            type=sha,prefix=sha-
             type=raw,value=latest,enable={{is_default_branch}}
 
       - name: Log in to Docker Hub
